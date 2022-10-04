@@ -17,9 +17,5 @@ const products = config.define('Product', {
     }
 });
 
-store.hasMany(products, {
-    foreignKey: "store_id",
-    as: "product_item"
-});
 
 module.exports = products;
