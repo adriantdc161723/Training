@@ -49,6 +49,11 @@ ProductRouter.post('/get-product-by-id-with-store-info/:id', async (req, res)=>{
 
 });
 
+ProductRouter.get('/get-products', async (req, res)=>{
+    const response = await ProductController.getProducts(req.query);
+    return res.status(response.status).send(response);
+});
+
 ProductRouter.post('/create-product', async (req, res)=>{
     const response = await ProductController.createProduct(req.body);
     return res.status(response.status).send(response);

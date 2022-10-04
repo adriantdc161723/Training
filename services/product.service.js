@@ -56,6 +56,22 @@ class ProductService extends Response{
     }
 
 
+    async getProducts (offset, limit, sort, order) {
+        try {
+
+            const exist = await Products.findAll({offset, limit, order: [[sort, order]]});
+            if(exist){
+                return this.RESPONSE(OK, exist, OK_MESSAGE);
+            }else{
+                return this.RESPONSE(BADREQUEST, {}, BADREQUEST);
+            }
+
+        } catch (error) {
+            return this.RESPONSE(INTERNAL_SERVER_ERROR, error.message, INTERNAL_SERVER_ERROR_MESSAGE);
+        }
+    }
+
+
     async createProduct (requestObject) {
 
         try {
