@@ -19,10 +19,12 @@ config.authenticate()
 //Module
 const StoreRouter = require('./routes/store.route');
 const UserRouter = require('./routes/user.route');
+const ProductRouter = require('./routes/product.route');
 
 //Routes
 app.use(StoreRouter);
 app.use(UserRouter);
+app.use(ProductRouter);
 
 app.listen(PORT, err =>{
     if(err) throw err;
